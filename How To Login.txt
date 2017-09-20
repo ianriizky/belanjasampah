@@ -1,0 +1,15 @@
+Admin Sistem
+Username : adminsistem
+Password : sistem
+
+Admin Koperasi
+Username : koperasi
+Password : 123456
+
+Admin Bank
+Username : bank
+Password : 123456
+
+Nasabah
+Username : nasabah
+Password : 123456
