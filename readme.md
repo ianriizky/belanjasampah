@@ -1,4 +1,4 @@
-<p align="center"><img src="http://belanjasampah.com/img/logo.png" width="500"></p>
+<p align="center"><img src="public/img/logo.png" width="500"></p>
 
 ## Apa itu Belanja Sampah?
 
