@@ -1,4 +1,13 @@
-<p align="center"><img src="http://belanjasampah.com/img/logo.png" width="500"></p>
+<p align="center">
+    <img src="public/images/logo.png" width="500">
+</p>
+
+<p align="center">
+    <a href="https://travis-ci.org/ianriizky/belanjasampah"><img src="https://travis-ci.org/ianriizky/belanjasampah.svg" alt="Build Status"></a>
+    <a href="https://packagist.org/packages/ianriizky/belanjasampah"><img src="https://img.shields.io/packagist/dt/ianriizky/belanjasampah" alt="Total Downloads"></a>
+    <a href="https://packagist.org/packages/ianriizky/belanjasampah"><img src="https://img.shields.io/packagist/v/ianriizky/belanjasampah" alt="Latest Stable Version"></a>
+    <a href="https://packagist.org/packages/ianriizky/belanjasampah"><img src="https://img.shields.io/packagist/l/ianriizky/belanjasampah" alt="License"></a>
+</p>
 
 ## Apa itu Belanja Sampah?
 
@@ -13,11 +22,15 @@ Belanja sampah adalah sebuah sistem informasi yang memungkinkan nasabah dari ban
 
 Belanjasampah ini adalah proyek percontohan yang saya ajukan dalam menyusun tugas akhir sebagai syarat kelulusan di Program D3 Sistem Informasi saya di Politeknik Negeri Bali. Namun saya berharap kedepannya konsep ini dapat dikembangkan dan dapat diwujudkan dalam suatu sistem informasi yang nyata suatu saat nanti.
 
-## Bagaimana cari login?
+## Mengapa harus upgrade?
 
-Berikut ini 4 akses yang saya buat pada belanjasampah dan bisa teman-teman gunakan sebagai bahan untuk mengetes sistem informasi ini :
+Aplikasi ini saya buat pada tahun 2017 sebagai syarat untuk mendapatkan gelar D3 Manajemen Informatika di Politeknik Negeri Bali. Di tahun 2019 ini, tentunya ada banyak sekali hal yang harus saya sesuaikan mengikuti perkembangan teknologi PHP yang ada pada saat ini. Beberapa upgrade yang saya lakukan di antaranya:
 
-- Admin sistem : adminsistem (password: sistem)
-- Admin koperasi : koperasi (password: 123456)
-- Admin bank : adminsistem (password: 123456)
-- Nasabah : adminsistem (password: 123456)
+- [ ] Upgrade framework Laravel (dari 5.4 ke 8)
+- [ ] Refactor code (skill code saya pada tahun 2017 masih sangat _newbie_ sekali)
+- [ ] Menstruktur ulang *database*
+- [ ] dll (masih belum terpikirkan saat ini)
+
+## Penutup
+
+Saya berharap aplikasi ini bisa berguna bagi yang membutuhkannya. _Thank you_ :)

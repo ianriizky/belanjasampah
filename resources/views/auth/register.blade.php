@@ -1,53 +1,67 @@
-@extends('layouts.venedor')
+<x-guest-layout>
+    <x-auth-card>
+        <x-slot name="logo">
+            <a href="/">
+                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            </a>
+        </x-slot>
 
-@section('htmlheader_title', 'Daftar')
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-@push('styles')
-<link rel="stylesheet" href="{{ asset('css/jquery.selectbox.css') }}">
-@endpush
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
 
-@push('scripts')
-<script src="{{ asset('plugins/jquery-selectbox/jquery.selectbox.min.js') }}"></script>
-@endpush
+            <div>
+                <x-label for="name" :value="__('Name')" />
 
-@push('breadcrumbs')
-<div id="breadcrumb-container">
-    <div class="container">
-        <ul class="breadcrumb">
-            <li><a href="/">Beranda</a></li>
-            <li class="active">Daftar</li>
-        </ul>
-    </div>
-</div>
-@endpush
+                <x-input id="name"
+                    class="block mt-1 w-full"
+                    type="text"
+                    name="name"
+                    :value="old('name')"
+                    required autofocus />
+            </div>
 
-@section('main-content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <header class="content-title">
-                <h1 class="title">Daftar</h1>
-                <p class="title-desc">Jika anda sudah memiliki akun, silahkan login <a href="{{ url('login') }}">disini</a>.</p>
-            </header>
-            <div class="xs-margin"></div><!-- space -->
-            <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
-                <div class="xs-margin"></div>
-                <form id="login-form" method="POST" action="{{ route('register') }}">
-                    {{ csrf_field() }}
-                    <label>Silahkan pilih jenis usaha yang ingin anda daftarkan</label>
-                    <div class="normal-selectbox clearfix">
-                        <select id="roles" name="roles" class="selectbox">
-                            @foreach ($roles as $role)
-                            <option value="{{ $role->id }}">{{ $role->display_name }}</option>
-                            @endforeach
-                        </select>
-                    </div>{{--  End .normal-selectbox  --}}
-                    <div class="sm-margin"></div>{{-- space --}}
-                    <button type="submit" class="btn btn-custom-2 btn-block">DAFTAR</button>
-                    <div class="lg-margin"></div>{{-- space --}}
-                </form>
-            </div>{{-- End .col-md-6 --}}
-        </div>{{-- End .col-md-12 --}}
-    </div>{{-- End .row --}}
-</div>{{-- End .container --}}
-@endsection
+            <div class="mt-4">
+                <x-label for="email" :value="__('Email')" />
+
+                <x-input id="email"
+                    class="block mt-1 w-full"
+                    type="email"
+                    name="email"
+                    :value="old('email')"
+                    required />
+            </div>
+
+            <div class="mt-4">
+                <x-label for="password" :value="__('Password')" />
+
+                <x-input id="password"
+                    class="block mt-1 w-full"
+                    type="password"
+                    name="password"
+                    required autocomplete="new-password" />
+            </div>
+
+            <div class="mt-4">
+                <x-label for="password_confirmation" :value="__('Confirm Password')" />
+
+                <x-input id="password_confirmation"
+                    class="block mt-1 w-full"
+                    type="password"
+                    name="password_confirmation"
+                    required />
+            </div>
+
+            <div class="flex items-center justify-end mt-4">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                    {{ __('Already registered?') }}
+                </a>
+
+                <x-button class="ml-4">
+                    {{ __('Register') }}
+                </x-button>
+            </div>
+        </form>
+    </x-auth-card>
+</x-guest-layout>

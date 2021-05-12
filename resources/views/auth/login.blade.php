@@ -1,63 +1,61 @@
-@extends('layouts.venedor')
+<x-guest-layout>
+    <x-auth-card>
+        <x-slot name="logo">
+            <a href="/">
+                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            </a>
+        </x-slot>
 
-@section('htmlheader_title', 'Login')
+        <x-auth-session-status class="mb-4" :status="session('status')" />
 
-@push('breadcrumbs')
-<div id="breadcrumb-container">
-	<div class="container">
-		<ul class="breadcrumb">
-			<li><a href="/">Home</a></li>
-			<li class="active">Login</li>
-		</ul>
-	</div>
-</div>
-@endpush
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-@section('main-content')
-<div class="container">
-	<div class="row">
-		<div class="col-md-12">
-            <header class="content-title">
-                <h1 class="title">Login</h1>
-                <p class="title-desc">Jika anda belum memiliki akun, silahkan mendaftar <a href="{{ url('/register') }}">disini</a>.</p>
-            </header>
-		   	<div class="row">
-			   	<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
-			   		<div class="xs-margin"></div>
-					<form id="login-form" method="POST" action="{{ route('login') }}">
-						{{ csrf_field() }}
-						{{-- Username --}}
-                        <div class="input-group{{ $errors->has('id') ? ' has-error' : '' }}">
-                            <span class="input-group-addon"><span class="input-icon input-icon-user"></span><span class="input-text">Username</span></span>
-                            <input type="text" id="id" name="id" value="{{ old('id') }}" class="form-control input-lg" placeholder="Username" required autofocus>
-                        </div>
-                        @if ($errors->has('id'))
-                        <span class="help-block">{{ $errors->first('id') }}</span>
-                        <div class="sm-margin"></div>{{-- space --}}
-                        @endif
-                        {{-- Password --}}
-                        <div class="input-group xs-margin{{ $errors->has('id') ? ' has-error' : '' }}">
-                            <span class="input-group-addon"><span class="input-icon input-icon-password"></span><span class="input-text">Password</span></span>
-                            <input type="password" id="password" name="password" value="{{ old('password') }}" class="form-control input-lg" placeholder="Password" required>
-                        </div>
-                        @if ($errors->has('password'))
-                        <span class="help-block">{{ $errors->first('password') }}</span>
-                        <div class="sm-margin"></div>{{-- space --}}
-                        @endif
-                        <div class="checkbox">
-                         	<label>
-                        		<input type="checkbox" id="remember" name="remember"{{ old('remember') ? ' checked' : '' }}>
-                        		Ingat saya
-                        	</label>
-                        </div>
-                        <div class="sm-margin"></div>{{-- space --}}
-	                    <button type="submit" class="btn btn-custom-2 btn-block">MASUK</button>
-                    </form>
-                    <div class="sm-margin"></div>{{-- space --}}
-                    <span>Lupa password? Klik <a href="{{ route('password.request') }}">disini</a>.</span>
-			   	</div>{{-- End .col-md-6 --}}
-		   </div>{{-- End.row --}}
-		</div>{{-- End .col-md-12 --}}
-	</div>{{-- End .row --}}
-</div>{{-- End .container --}}
-@endsection
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
+
+            <div>
+                <x-label for="email" :value="__('Email')" />
+
+                <x-input id="email"
+                    class="block mt-1 w-full"
+                    type="email"
+                    name="email"
+                    :value="old('email')"
+                    required autofocus />
+            </div>
+
+            <div class="mt-4">
+                <x-label for="password" :value="__('Password')" />
+
+                <x-input id="password"
+                    class="block mt-1 w-full"
+                    type="password"
+                    name="password"
+                    required autocomplete="current-password" />
+            </div>
+
+            <div class="block mt-4">
+                <label for="remember_me" class="inline-flex items-center">
+                    <input id="remember_me"
+                        type="checkbox"
+                        class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        name="remember">
+
+                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                </label>
+            </div>
+
+            <div class="flex items-center justify-end mt-4">
+                @if (Route::has('password.request'))
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                        {{ __('Forgot your password?') }}
+                    </a>
+                @endif
+
+                <x-button class="ml-3">
+                    {{ __('Log in') }}
+                </x-button>
+            </div>
+        </form>
+    </x-auth-card>
+</x-guest-layout>
